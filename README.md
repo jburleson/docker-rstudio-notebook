@@ -6,7 +6,7 @@ A variety of different packages are pre-installed and can be used right away.
 This docker container is based off the [Galaxy-RStudio project](https://github.com/erasche/docker-rstudio-notebook).
 
 Docker Image is based on the following:
-- [rocker/r-ver:3.5.0](https://github.com/rocker-org/rocker-versioned
+- [rocker/r-ver:3.5.0](https://github.com/rocker-org/rocker-versioned)
 
 ## Usage
 
