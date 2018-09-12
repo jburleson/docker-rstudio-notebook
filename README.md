@@ -3,7 +3,10 @@
 RStudio running in a docker container. This image can be used to integrate RStudio into Galaxy.
 A variety of different packages are pre-installed and can be used right away.
 
-This docker container is used by the [Galaxy-RStudio project](https://github.com/erasche/docker-rstudio-notebook).
+This docker container is based on the [Galaxy-RStudio project](https://github.com/erasche/docker-rstudio-notebook).
+
+Base Image: [rocker/r-ver:3.5.0](https://github.com/rocker-org/rocker-versioned/tree/master/r-ver/3.5.0)
+Added: RStudio, R packages (TDM & WGCNA), plus Galaxy tie ins.
 
 ## Usage
 
@@ -31,9 +34,9 @@ Several environment variables are available by default, per IE rough standards
 
 #### Build-Time Variables
 
-Variable       | Use
--------------- | ----
-`RSTUDIO_FULL` | Build RStudio with the full complement of Bio packages (warning, slow)
+Variable        | Use
+--------------- | ----
+RSTUDIO_VERSION | Build a specific version of RStudio
 
 #### Run-Time Variables
 
