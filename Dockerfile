@@ -28,7 +28,7 @@ RUN apt-get -qq update && \
 
 
 # Build specific
-ENV RSTUDIO_VERSION 0.99.903
+ENV RSTUDIO_VERSION 1.1.456
 
 # Install rstudio-server
 RUN wget http://download2.rstudio.org/rstudio-server-${RSTUDIO_VERSION}-amd64.deb && \
@@ -38,8 +38,8 @@ RUN wget http://download2.rstudio.org/rstudio-server-${RSTUDIO_VERSION}-amd64.de
 ADD rsession.conf /etc/rstudio/rsession.conf
 
 # Install packages
-COPY ./packages.R /tmp/packages.R
-RUN Rscript /tmp/packages.R
+#COPY ./packages.R /tmp/packages.R
+#RUN Rscript /tmp/packages.R
 
 # ENV variables to replace conf file from Galaxy
 ENV DEBUG=false \
@@ -59,12 +59,14 @@ ADD ./startup.sh /startup.sh
 ADD ./monitor_traffic.sh /monitor_traffic.sh
 ADD ./proxy.conf /proxy.conf
 ADD ./GalaxyConnector /tmp/GalaxyConnector
+ADD /packages.R /tmp/packages.R
 ADD ./packages-gx.R /tmp/packages-gx.R
 ADD ./rserver.conf /etc/rstudio/rserver.conf
 
 # /import will be the universal mount-point for IPython
 # The Galaxy instance can copy in data that needs to be present to the Rstudio webserver
 RUN chmod +x /startup.sh && \
+    Rscript /tmp/packages.R && \
     Rscript /tmp/packages-gx.R && \
     pip install galaxy-ie-helpers && \
     groupadd -r rstudio -g 1450 && \
