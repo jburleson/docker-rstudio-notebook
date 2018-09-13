@@ -14,8 +14,7 @@ RUN apt-get -qq update && \
     dpkg-reconfigure locales && \
     apt-get install --no-install-recommends -y apt-transport-https ca-certificates && \
     echo "deb https://cran.rstudio.com/bin/linux/ubuntu trusty/" >> /etc/apt/sources.list && \
-    apt-key adv --keyserver keys.gnupg.net --recv-key 06F90DE5381BA480 && \
-    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 51716619E084DAB9 && \
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-key 51716619E084DAB9 && \
     apt-get -qq update && \
     apt-get install --no-install-recommends -y \
         r-base r-base-dev dpkg wget psmisc libssl1.0.0 procps sudo \
