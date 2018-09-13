@@ -10,16 +10,14 @@ ENV DEBIAN_FRONTEND=noninteractive \
     LC_ALL=en_US.UTF-8
 
 RUN apt-get -qq update && \
+    locale-gen en_US.UTF-8 && \
+    dpkg-reconfigure locales && \
     apt-get install --no-install-recommends -y apt-transport-https ca-certificates && \
     echo "deb https://cran.rstudio.com/bin/linux/ubuntu trusty/" >> /etc/apt/sources.list && \
     apt-key adv --keyserver keys.gnupg.net --recv-key 06F90DE5381BA480 && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 51716619E084DAB9 && \
     apt-get -qq update && \
-    apt-get install --no-install-recommends -y locales && \
-    echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen && \
-    locale-gen en_US.UTF-8 && \
-    dpkg-reconfigure locales && \
-    apt-get install --no-install-recommends -y apt-transport-https \
+    apt-get install --no-install-recommends -y \
         r-base r-base-dev dpkg wget psmisc libssl1.0.0 procps sudo \
         libcurl4-openssl-dev curl libxml2-dev nginx python python-pip net-tools \
         lsb-release tcpdump unixodbc unixodbc-dev libmyodbc odbcinst odbc-postgresql \

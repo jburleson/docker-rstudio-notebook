@@ -28,4 +28,11 @@ if(Sys.getenv(x = "RSTUDIO_FULL", unset="0") == "1") {
     biocLite("GenomicRanges")
     biocLite("Rsamtools")
     biocLite("affy")
+    biocLite("impute")
+    biocLite("preprocessCore")
+    biocLite("GO.db")
+    biocLite("AnnotationDbi")
+    install.packages(c('WCGNA'))
+    library(devtools)
+    devtools::install_github("greenlab/TDM")
 }
