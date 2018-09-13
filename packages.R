@@ -32,7 +32,7 @@ if(Sys.getenv(x = "RSTUDIO_FULL", unset="0") == "1") {
     biocLite("preprocessCore")
     biocLite("GO.db")
     biocLite("AnnotationDbi")
-    install.packages(c('WCGNA'))
+    install.packages(c('WGCNA'))
     library(devtools)
     devtools::install_github("greenlab/TDM")
 }
